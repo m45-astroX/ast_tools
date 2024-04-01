@@ -142,7 +142,7 @@ int main ( int argc, char *argv[] ) {
             }
         }
         // X座標
-        fprintf(stdout, "RDETX = %0.5lf\n", (double)(counts_projection[1]*2 + counts_projection[2]*3 + counts_projection[3]*4 + counts_projection[4]*5) / counts_sum);
+        fprintf(stdout, "RDETX = %.15f\n", ((double)counts_projection[1]*2.0 + (double)counts_projection[2]*3.0 + (double)counts_projection[3]*4.0 + (double)counts_projection[4]*5.0) / (double)counts_sum);
 
         /* Y座標 */
         // 変数リセット
@@ -154,8 +154,7 @@ int main ( int argc, char *argv[] ) {
             }
         }
         // Y座標
-        fprintf(stdout, "RDETY = %0.5lf\n", (double)(counts_projection[1]*2 + counts_projection[2]*3 + counts_projection[3]*4 + counts_projection[4]*5) / counts_sum);
-
+        fprintf(stdout, "RDETY = %.15f\n", ((double)counts_projection[1]*2.0 + (double)counts_projection[2]*3.0 + (double)counts_projection[3]*4.0 + (double)counts_projection[4]*5.0) / (double)counts_sum);
     }
 
     /* fclose */
