@@ -6,7 +6,6 @@
 
     v1.0 by Yuma Aoki (Kindai Univ.)
 
-
 */
 
 #include <stdio.h>
