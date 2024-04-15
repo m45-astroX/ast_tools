@@ -1,6 +1,6 @@
 /*
 
-    sxs_pixel_difinition
+    sxs_pixel_definition
 
     v1.0 by Yuma Aoki (Kindai Univ.)
     
@@ -26,8 +26,8 @@
 
 */
 
-#ifndef SXS_PIXEL_DIFINITION
-#define SXS_PIXEL_DIFINITION
+#ifndef SXS_PIXEL_DEFINITION
+#define SXS_PIXEL_DEFINITION
 
 // 要素番号:ピクセル番号(0--35) ,値:X座標(0--5)
 static int xaxis_value_ref[36] = {

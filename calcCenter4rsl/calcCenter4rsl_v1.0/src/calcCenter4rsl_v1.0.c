@@ -4,7 +4,7 @@
 
     resolveのイベントファイルから天体の中心を求めるプログラム。
 
-    v1.0 by Yuma Aoki (Kindai Univ.)
+    2024.04.11 v1.0 by Yuma Aoki (Kindai Univ.)
 
 */
 
@@ -12,9 +12,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "fitsio.h"
-#include "sxs_pixel_difinition.h"
+#include "sxs_pixel_definition.h"
 
-//#define DEBUG
 
 int main ( int argc, char *argv[] ) {
 
