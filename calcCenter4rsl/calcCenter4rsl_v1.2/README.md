@@ -1,16 +1,25 @@
 # calcCenter4rsl
 
-本ドキュメントの変更履歴
-\# 2024.04.01 v1 by Yuma Aoki (Kindai Univ.)
-\# 2024.04.11 v2 by Yuma Aoki (Kindai Univ.)
-\#    - 必要なツール、環境変数の説明を追記
+本ドキュメントの変更履歴  
+\# 2024.04.01 v1 by Yuma Aoki (Kindai Univ.)  
+\# 2024.04.11 v2 by Yuma Aoki (Kindai Univ.)  
+\#     - 必要なツール、環境変数の説明を追記  
+\# 2024.04.18 v3 by Aoki (Kindai Univ.)  
+\#     - 軽微な修正  
+
+
+
+## 概要
+
+XRISM/Resolveのイベントデータから各ピクセルのイベント数を計算し、天体の重心を計算するスクリプト。
+
 
 
 ## 必要なツール
 
-    - heasoft (heasoft-6.32.1 or latest version)
-    - make
-    - gcc
+- heasoft (heasoft-6.32.1 or latest version)
+- make
+- gcc
 
 
 

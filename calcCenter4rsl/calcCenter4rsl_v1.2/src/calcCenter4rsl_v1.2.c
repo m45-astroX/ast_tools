@@ -2,11 +2,13 @@
 
     calcCenter4rsl
 
-    resolveのイベントファイルから天体の中心を求めるプログラム。
+    XRISM/Resolveのイベントファイルから各ピクセルのイベント数を計算し、
+    天体の重心を求めるスクリプト。
 
     2024.04.11 v1.0 by Yuma Aoki (Kindai Univ.)
     2024.04.18 v1.2 by Yuma Aoki (Kindai Univ.)
         - sxs_pixel_definition.hの変更(v1.0 -> v2.0)に伴いマスタ側も修正
+        - 要求する引数をイベントファイルのみに変更。計算方法は$2および$3で指定可能。
 
 */
 
@@ -37,10 +39,20 @@ int main ( int argc, char *argv[] ) {
     char method[256];
     char region[256];
 
-    if ( argc != 4 ) {
-        fprintf(stderr, "Usage : ./calcCenter4rsl eventfile Method(AVE or COG) Region(INNER16 or OUTER36)\n");
+    if ( argc == 2 ) {
+        snprintf(method, sizeof(method), "COG");
+        snprintf(region, sizeof(region), "INNER16");
+    }
+    else if ( argc == 4 ) {
+        snprintf(method, sizeof(method), "%s", argv[2]);
+        snprintf(region, sizeof(region), "%s", argv[3]);
+    }
+    else {
+        fprintf(stderr, "Usage : ./calcCenter4rsl eventfile (Method; optional) (Region; optional)\n");
         fprintf(stderr, "    Method AVE : Average\n");
-        fprintf(stderr, "           COG : Center of Gravity\n");
+        fprintf(stderr, "           COG : Center of Gravity   <-- Default\n");
+        fprintf(stderr, "    Region INNER16   <-- Default\n");
+        fprintf(stderr, "           OUTER36\n");
         return -1;
     }
 
@@ -54,43 +66,48 @@ int main ( int argc, char *argv[] ) {
     /* Read arguments */
     fitsfile *fp = NULL;
     if ( fits_open_file(&fp, argv[1], READONLY, &status) != 0 ) {
-        fprintf(stderr, "FITS file open error (%s) status=%d\n", argv[1], status);
-        fprintf(stderr, "abort.\n");
+        fprintf(stderr, "*** Error\n");
+        fprintf(stderr, "FITS file open error!\n", argv[1], status);
+        fprintf(stderr, "file   : %s\n", argv[1]);
+        fprintf(stderr, "status : %d\n", status);
+        fprintf(stderr, "abort\n");
         return -1;
     }
 
     // Method
-    snprintf(method, sizeof(method), "%s", argv[2]);
     if ( strcmp(method, "AVE") == 0 || strcmp(method, "ave") == 0 || strcmp(method, "A") == 0 || strcmp(method, "a") == 0 ) {
         method_num = 0;
         // OUTER36用計算コードの作成待ち
+        fprintf(stderr, "*** Error\n");
         fprintf(stderr, "Method AVE is not supported in this version.\n");
-        fprintf(stderr, "abort.\n"); 
+        fprintf(stderr, "abort\n");
         return -1;
     }
     else if ( strcmp(method, "COG") == 0 || strcmp(method, "cog") == 0 || strcmp(method, "G") == 0 || strcmp(method, "g") == 0 ) {
         method_num = 1;
     }
     else {
+        fprintf(stderr, "*** Error\n");
         fprintf(stderr, "Method($2) must be AVE or COG!\n");
-        fprintf(stderr, "abort.\n");
+        fprintf(stderr, "abort\n");
         return -1;
     }
 
     // Region
-    snprintf(region, sizeof(region), "%s", argv[3]);
     if ( strcmp(region, "INNER16") == 0 || strcmp(region, "inner16") == 0 || strcmp(region, "I") == 0 || strcmp(region, "i") == 0 ) {
         region_num = 0;
     }
     else if ( strcmp(region, "OUTER36") == 0 || strcmp(region, "outer36") == 0 || strcmp(region, "O") == 0 || strcmp(region, "o") == 0 ) {
         region_num = 1;
         // OUTER36用計算コードの作成待ち
+        fprintf(stderr, "*** Error\n");
         fprintf(stderr, "Region OUTER36 is not supported in this version.\n");
-        fprintf(stderr, "abort.\n"); 
+        fprintf(stderr, "abort\n"); 
     }
     else {
-        fprintf(stderr, "Region($2) must be INNER16 or OUTER36!\n");
-        fprintf(stderr, "abort.\n");
+        fprintf(stderr, "*** Error\n");
+        fprintf(stderr, "Region($3) must be INNER16 or OUTER36!\n");
+        fprintf(stderr, "abort\n");
         return -1;
     }
 
