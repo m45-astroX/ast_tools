@@ -1,9 +1,7 @@
 # rslreggen
 
 本ドキュメントの変更履歴  
-\# 2024.04.01 v1 by Yuma Aoki (Kindai Univ.)  
-\# 2024.04.11 v2 by Yuma Aoki (Kindai Univ.)  
-\#    - 必要なツール、環境変数の説明を追記  
+\# 2024.04.18 v1 by Yuma Aoki (Kindai Univ.)  
 
 
 ## 概要
@@ -29,11 +27,14 @@ XRISM/Resolveの任意のピクセルのRegionファイルを生成するスク�
 
 ピクセル定義ファイル (pixreffile) を入力として、スクリプトを実行する。
 
-    $ ./rslreggen pixreffile
+    $ ./rslreggen pixreffile (regfile; optional)
+        pixreffile : input (ASCII format)
+        regfile : output (ds9 format)
 
-成功した場合、sxs_rslreggen.reg が出力される。
+成功した場合、ds9のフォーマットで sxs_rslreggen_det.reg が出力される。
+なお座標系はDET。
+
 
 ### ピクセル参照ファイル (pixreffile)
 
-Regionファイルに含めるピクセルを定義したASCII形式のファイル。`./sample/` にサンプルを置いている。
-
+Regionファイルに含めるピクセルを定義したASCII形式のファイル。1行ずつピクセル番号(0--35)を定義する。ピクセル番号の定義は "ASTRO-H COORDINATES DEFINITIONS ASTH-SCT-020" を参照。`./sample/` にサンプルを置いている。

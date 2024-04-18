@@ -18,25 +18,45 @@
 #define CALSRCPIX_WARNING 1
 #define SCRIPT_VERSION "1.0"
 
+
 int main ( int argc, char *argv[] ) {
 
-    if ( argc != 2 ) {
-        fprintf(stderr, "Usage : ./rslreggen pixreffile\n");
+    /* Variables */
+    int status = 0;
+    int activepixel[PIXNUMMAX];         // ピクセル番号格納用
+    int activepixel_element = 0;        // 配列activepixelの要素指定用
+    int buf_int = 0;                    // ピクセル番号の読み込み用buffer変数
+    int readlinenumber = 0;             // pixreffileの行カウント用
+    char buf_char256[256];              // ファイルの読み込み用buffer変数
+    char regfile_path[FILENAME_MAX];
+    char pixreffile_path[FILENAME_MAX];
+
+    /* Initialize */
+    for (int i=0; i<PIXNUMMAX; i++) {
+        activepixel[i] = 0;
+    }
+
+    /* Arguments */
+    if ( argc == 2 ) {
+        snprintf(pixreffile_path, sizeof(pixreffile_path), "%s", argv[1]);
+        snprintf(regfile_path, sizeof(regfile_path), "./sxs_rslreggen_det.reg");
+    }
+    else if ( argc == 3 ) {
+        snprintf(pixreffile_path, sizeof(pixreffile_path), "%s", argv[1]);
+        snprintf(regfile_path, sizeof(regfile_path), "%s", argv[2]);
+    }
+    else {
+        fprintf(stderr, "Usage : ./rslreggen pixreffile (regfile; optional)\n");
+        fprintf(stderr, "    pixreffile : input (ASCII format)\n");
+        fprintf(stderr, "    regfile : output (ds9 format)\n");
         return -1;
     }
 
-    int status = 0;
-    int activepixel[PIXNUMMAX];
-    int activepixel_element = 0;
-    int buf_int = 0;
-    int readlinenumber = 0;
-    char buf_char256[256];
-    char regfile_path[] = "./sxs_rslreggen.reg";
 
     /* Files */
     // pixreffile
     FILE *fp_pixreffile = NULL;
-    fp_pixreffile = fopen(argv[1], "r");
+    fp_pixreffile = fopen(pixreffile_path, "r");
     if ( fp_pixreffile == NULL ) {
         fprintf(stderr, "*** ERROR!!\n");
         fprintf(stderr, "Can not open pixreffile!\n");
@@ -88,7 +108,8 @@ int main ( int argc, char *argv[] ) {
             fprintf(stdout, "pixreffile contains calibration source pixel (PIXEL=%d).\n\n", CALSRCPIX);
         }
 
-        // If selected region is N, the value of this variable is N+1.
+        // If the number of selected regions is N,
+        //     the value of this variable is N+1.
         activepixel_element ++;
 
     }
