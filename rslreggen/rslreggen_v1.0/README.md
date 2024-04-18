@@ -1,9 +1,9 @@
 # rslreggen
 
-本ドキュメントの変更履歴
-\# 2024.04.01 v1 by Yuma Aoki (Kindai Univ.)
-\# 2024.04.11 v2 by Yuma Aoki (Kindai Univ.)
-\#    - 必要なツール、環境変数の説明を追記
+本ドキュメントの変更履歴 \\
+\# 2024.04.01 v1 by Yuma Aoki (Kindai Univ.) \\
+\# 2024.04.11 v2 by Yuma Aoki (Kindai Univ.) \\
+\#    - 必要なツール、環境変数の説明を追記 \\
 
 
 ## 概要
