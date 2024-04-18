@@ -12,8 +12,8 @@ XRISM/Resolveの任意のピクセルのRegionファイルを生成するスク�
 
 ## 必要なツール
 
-    - make
-    - gcc
+- make
+- gcc
 
 
 
@@ -25,7 +25,7 @@ XRISM/Resolveの任意のピクセルのRegionファイルを生成するスク�
 
 成功した場合、実行ファイル rslreggen が生成される。
 
-ピクセル定義ファイル (pixreffile) を入力として、スクリプトを実行する。
+ピクセル定義ファイル (pixreffile) を入力として、スクリプトを実行する。出力されるRegionファイルの名前は第2引数で指定可能。
 
     $ ./rslreggen pixreffile (regfile; optional)
         pixreffile : input (ASCII format)
@@ -37,4 +37,4 @@ XRISM/Resolveの任意のピクセルのRegionファイルを生成するスク�
 
 ### ピクセル参照ファイル (pixreffile)
 
-Regionファイルに含めるピクセルを定義したASCII形式のファイル。1行ずつピクセル番号(0--35)を定義する。ピクセル番号の定義は "ASTRO-H COORDINATES DEFINITIONS ASTH-SCT-020" を参照。`./sample/` にサンプルを置いている。
+Regionファイルに含めるピクセルを定義したASCII形式のファイル。ピクセル番号(0--35)を1行ずつ定義する。ピクセル番号の定義は "ASTRO-H COORDINATES DEFINITIONS ASTH-SCT-020" を参照。サンプルは `./sample/` に置いてある。
