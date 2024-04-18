@@ -67,7 +67,7 @@ int main ( int argc, char *argv[] ) {
     fitsfile *fp = NULL;
     if ( fits_open_file(&fp, argv[1], READONLY, &status) != 0 ) {
         fprintf(stderr, "*** Error\n");
-        fprintf(stderr, "FITS file open error!\n", argv[1], status);
+        fprintf(stderr, "FITS file open error!\n");
         fprintf(stderr, "file   : %s\n", argv[1]);
         fprintf(stderr, "status : %d\n", status);
         fprintf(stderr, "abort\n");

@@ -41,7 +41,11 @@ XRISM/Resolveのイベントデータから各ピクセルのイベント数を�
 
 イベントファイルを入力とし、天体の中心を算出する。
 
-    $ ./calcCenter4rsl eventfile Method(AVE or COG) Region(INNER16 or OUTER36)
+    $ ./calcCenter4rsl eventfile (Method; optional) (Region; optional)
+        Method AVE : Average
+               COG : Center of Gravity    <-- Default
+        Region INNER16   <-- Default
+               OUTER36
 
 - Method
     天体中心の算出方法。
