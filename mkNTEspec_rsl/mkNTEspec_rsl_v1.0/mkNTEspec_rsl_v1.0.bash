@@ -17,7 +17,7 @@ else
 
     BASENAME=$1
     infile=$2
-    outfile_evt="${BASENAME}_nte.evt"
+    outfile_evt="${BASENAME}_nte_cl2.evt"
     outfile_pi="${BASENAME}_nte.pi"
     outfile_lc="${BASENAME}_nte.lc"
 
@@ -72,17 +72,20 @@ ahscreen \
     mergegti=AND \
     1>> $f_log 2>> $f_log
 
-# Exclude calpixel
-echo "" >> $f_log
-echo "CMD : fselect $tmpfile1 $outfile_evt PIXEL!=12" >> $f_log
-echo "" >> $f_log
-
-fselect $tmpfile1 $outfile_evt "PIXEL!=12" \
-1>> $f_log 2>> $f_log
-
 echo "" >> $f_log
 echo "END Extract NTE events" >> $f_log
 echo "" >> $f_log
+
+
+# Edit header
+fparkey fitsfile=${tmpfile1}+1 keyword=TLMIN46 value=0 
+
+
+# Make cl2
+ftcopy \
+    infile="${tmpfile1}[EVENTS][(PI>=600)&&((RISE_TIME>=40&&RISE_TIME<=60&&ITYPE<4)||(ITYPE==4))&&STATUS[4]==b0]" \
+    outfile="$outfile_evt" \
+    copyall=yes clobber=yes history=yes
 
 
 
