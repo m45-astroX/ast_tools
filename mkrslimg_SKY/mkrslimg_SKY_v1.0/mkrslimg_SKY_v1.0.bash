@@ -11,6 +11,11 @@ VERSION=1.0
 if [ $# -eq 2 ] ; then
     BASENAME=$1
     f_evtcl2_fullpath=$2
+    CLOBBER_OUTFILE='N'
+elif [ $# -eq 3 ] ; then
+    BASENAME=$1
+    f_evtcl2_fullpath=$2
+    CLOBBER_OUTFILE=$3
 else
     echo ""
     echo "Usage : bash mkimg_SKY_v${VERSION}.bash BASENAME clean2evtfile (CLOBBER_OUTFILE)"
@@ -61,14 +66,22 @@ echo "END INFO" >> $f_log
 echo "" >> $f_log
 
 # Check outfiles
-if [ "$CLOBBER_OUTFILE" = 'Y' ] ; then
-
-    if [ -e "$f_img" ] ; then rm -f $f_img ; fi
-
-elif [ "$CLOBBER_OUTFILE" = 'N' ] ; then
-
-    if [ -e "$f_img" ] ; then echo "\$f_img exists ($f_img)"; echo "abort"; exit; fi
-
+if [ "$CLOBBER_OUTFILE" = 'Y' ] || [ "$CLOBBER_OUTFILE" = 'y' ] || [ "$CLOBBER_OUTFILE" = 'YES' ] || [ "$CLOBBER_OUTFILE" = 'yes' ]; then
+    if [ -e "$f_img" ] ; then
+        rm -f $f_img
+    fi
+elif [ "$CLOBBER_OUTFILE" = 'N' ] || [ "$CLOBBER_OUTFILE" = 'n' ] || [ "$CLOBBER_OUTFILE" = 'NO' ] || [ "$CLOBBER_OUTFILE" = 'no' ] ; then
+    if [ -e "$f_img" ] ; then 
+        echo "*** ERROR"
+        echo "\$f_img exists ($f_img)"
+        echo "abort"
+        exit
+    fi
+else
+    echo "*** ERROR"
+    echo "\$3 must be 'Y' or 'N'!"
+    echo "abort"
+    exit
 fi
 
 # Extract Broadband Images by SKY coordinate
