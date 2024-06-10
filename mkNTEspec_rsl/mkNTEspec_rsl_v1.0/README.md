@@ -10,4 +10,6 @@ XRISM/Resolveのイベントファイル(uf)からNTEのスペクトルを作成
 
 ## 使い方
 
-    $ bash 
+    $ bash mkNTEspec_rsl_v1.0.bash BASENAME evtfile(uf)
+
+

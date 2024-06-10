@@ -90,7 +90,7 @@ echo "" >> $f_log
 echo "BEGIN XSELECT" >> $f_log
 echo "CMD : xselect" >> $f_log
 echo "" >> $f_log
-xselect << EOT
+xselect << EOT 1>> $f_log 2>> $f_log
 xsel
 
 ! Setup
