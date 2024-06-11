@@ -18,8 +18,8 @@ else
     BASENAME=$1
     infile=$2
     outfile_evt="${BASENAME}_nte_cl2.evt"
+    outfile_lc="${BASENAME}_nte_lc.fits"
     outfile_pi="${BASENAME}_nte.pi"
-    outfile_lc="${BASENAME}_nte.lc"
 
     if [ ! -e $infile ] ; then
         echo "Infile ($infile) does not exist!"
