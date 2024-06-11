@@ -54,10 +54,30 @@ else
     mkdir $d_log
 fi
 
+echo "" >> $f_log
+echo "BEGIN PARAMS" >> $f_log
+echo "SCRIPT_VERSION : $SCRIPT_VERSION" >> $f_log
+echo "HEADAS         : $HEADAS" >> $f_log
+echo "CALDB          : $CALDB" >> $f_log
+echo "" >> $f_log
+echo "pwd     : $(pwd)" >> $f_log
+echo "whoami  : $(whoami)" >> $f_log
+echo "\$0     : $0" >> $f_log
+echo "\$d_log : " >> $f_log
+echo "\$f_log : " >> $f_log
+echo "" >> $f_log
+echo "BASENAME (\$1) : $BASENAME" >> $f_log
+echo "infile   (\$2) : $infile" >> $f_log
+echo "" >> $f_log
+echo "outfile_evt : $outfile_evt" >> $f_log
+echo "outfile_lc  : $outfile_lc" >> $f_log
+echo "outfile_pi  : $outfile_pi" >> $f_log
+echo "END PARAMS" >> $f_log
+echo "" >> $f_log
+
 
 
 ### Extract NTE events ###
-echo "" >> $f_log
 echo "BEGIN Extract NTE events" >> $f_log
 echo "CMD : ahscreen infile=$infile outfile=$outfile gtifile=$infile[GTIEHKNTE] expr=NONE selectfile=NONE label=PIXELALL mergegti=AND" >> $f_log
 echo "" >> $f_log
