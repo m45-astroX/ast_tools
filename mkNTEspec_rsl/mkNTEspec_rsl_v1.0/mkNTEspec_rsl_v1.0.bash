@@ -63,8 +63,8 @@ echo "" >> $f_log
 echo "pwd     : $(pwd)" >> $f_log
 echo "whoami  : $(whoami)" >> $f_log
 echo "\$0     : $0" >> $f_log
-echo "\$d_log : " >> $f_log
-echo "\$f_log : " >> $f_log
+echo "\$d_log : $d_log" >> $f_log
+echo "\$f_log : $f_log" >> $f_log
 echo "" >> $f_log
 echo "BASENAME (\$1) : $BASENAME" >> $f_log
 echo "infile   (\$2) : $infile" >> $f_log
