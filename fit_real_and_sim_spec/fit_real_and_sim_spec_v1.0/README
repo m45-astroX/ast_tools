@@ -1,0 +1,16 @@
+### データのありか
+/Users/aoki/Desktop/XRISM-GC_analysis/analysis_reprocessedData/3000450X0_RSL_ana20250324/analysis_20250504_mincnt15_with_cxb/
+
+### 観測スペクトルの作成方法(サンプル)
+xspec << EOT
+/xw
+data RSL_GC2_Hp_src_barycor_min_15cnts.pi
+resp RSL_GC2-1_rmfsiz_X_comb.rmf.gz
+setplot energy
+plot
+iplot
+wdata RSL_GC2_Hp_src_barycor_min_15cnts.qdp
+quit
+exit
+EOT
+
