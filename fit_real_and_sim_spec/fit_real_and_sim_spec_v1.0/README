@@ -9,8 +9,16 @@ resp RSL_GC2-1_rmfsiz_X_comb.rmf.gz
 setplot energy
 plot
 iplot
-wdata RSL_GC2_Hp_src_barycor_min_15cnts.qdp
+wdata obs.spec
 quit
 exit
 EOT
 
+### シミュレーションスペクトルの作成方法(サンプル)
+root << EOT
+.L make_simspec.cxx
+char infile[] = "sim_NH1e23_spectra.root";
+char branch[] = "obs0/spectrum1";
+char outfile[] = "sim.spec";
+export_hist(infile, branch, outfile);
+EOT

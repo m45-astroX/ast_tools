@@ -1,0 +1,17 @@
+#!/bin/bash
+
+infile="Rratio_edit.dat"
+script="/Users/aoki/git/ast_tools/mk_Rratio_map/mk_Rratio_map_tau_vs_kT.py"
+
+kT_init_list=( \
+2.0 5.0 7.0 \
+10.0 20.0 50.0 70.0 \
+)
+
+for kT_init in ${kT_init_list[@]} ; do
+
+outfile="tau_vs_kT_kTinit_${kT_init}.png"
+
+python3 $script $infile $kT_init $outfile --rmin 0.0 --rmax 10.0 --xmin 5e9 --xmax 1e13 --ymin 1.0 --ymax 100.0
+
+done

@@ -4,7 +4,7 @@
 # v1.0 by Yuma Aoki (Kindai Univ.)
 
 
-TARGET = CALC_CROSS_SECTION
+TARGET = calc_line_flux_xray
 
 # Source
 SRC_DIR = ./src

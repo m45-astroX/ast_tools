@@ -1,0 +1,75 @@
+!xselect 02:33:26 12-Jun-2024
+xsel:SUZAKU >
+xsel:SUZAKU > ! Setup
+xsel:SUZAKU > set mission XRISM
+xsel:XRISM > ! Read events
+xsel:XRISM > read events
+> Enter the Event file dir >[.] .
+> Enter Event file list >[TEST_calpix_cl2.evt] TEST_calpix_cl2.evt
+ 
+ Notes: XSELECT set up for      XRISM
+ Time keyword is TIME       in units of s
+ Default timing binsize =   16.000
+ 
+Setting...
+ Image  keywords   = X          Y           with binning =    1
+ Energy keyword   = PI                     with binning =    1
+ 
+Getting Min and Max for Energy Column...
+Got min and max for PI:     0  59999
+ 
+Got the minimum time resolution of the read data:  0.50000E-05
+MJDREF =  5.8484000800741E+04 with TIMESYS = TT
+ Number of files read in:            1
+xsel_obscat.tmp outfile=/Users/aoki/.GIT/ast_tools/extractCalpixSpec/extractC
+alpixSpec_v1.0/xsel_read_cat.xsl keywords=@/Users/aoki/.GIT/ast_tools/extract
+CalpixSpec/extractCalpixSpec_v1.0/xsel_obslist.def maxlen=11 minlen=0 iform=I8
+ eform=E8.2 quiet=yes omit=no
+******************** Observation Catalogue ********************
+ 
+Data Directory is: /Users/aoki/.GIT/ast_tools/extractCalpixSpec/extractCalpixSp
+ec_v1.0/
+HK Directory is: /Users/aoki/.GIT/ast_tools/extractCalpixSpec/extractCalpixSpec
+_v1.0/
+d_cat.xsl STDOUT @xsel_display.def - prhead = no pagewidth = 128 wrap = ye
+s showunit = no tdisp = yes
+ 
+ 
+        OBJECT            TELESCOP    INSTRUME    DETNAM      DATAMODE    DATE-
+OBS            DATE-END
+      1 Galactic_Center_2 XRISM       RESOLVE     PIXEL       PX_NORMAL   2024-
+02-29T11:52:02 2024-03-02T08:00:01
+xsel:XRISM-RESOLVE-PX_NORMAL >
+xsel:XRISM-RESOLVE-PX_NORMAL > ! Make PI files
+xsel:XRISM-RESOLVE-PX_NORMAL > filter column "PIXEL=12:12"
+xsel:XRISM-RESOLVE-PX_NORMAL > filter GRADE "0:0"
+xsel:XRISM-RESOLVE-PX_NORMAL > extract spectrum
+ qdpfile = NONE fitsbinlc = NONE unbinlc = NONE phafile = xsel_hist.xsl imgfi
+le = NONE timefile = NONE adjustgti=no gstring = 0:0 usetpixrsel = no timeord
+er = no xcolf = X ycolf = Y xcolh = NONE ycolh = NONE xfkey = TLMAX yfkey = TLM
+AX xhkey = TLMAX yhkey = TLMAX phamax = TLMAX specbin = 1 binh = 1 binf = 1 bin
+lc = 1.6000000E+01 tcol = TIME ecol = PI ccol = NONE gcol = ITYPE polwcol = N
+ONE gti = GTI events = EVENTS gtitxt = xsel_ascii_out.xsl timeref = 40000.00
+ wtmapb = no stokes = NONE gtinam = GTI exitnow = no clobber=yes
+extractor v6.10    20 Jan 2023
+ Getting FITS WCS Keywords
+ Doing file: /Users/aoki/.GIT/ast_tools/extractCalpixSpec/extractCalpixSpec_v1.
+0/TEST_calpix_cl2.evt
+          Total      Good    Bad: Time     Phase     Grade       Cut
+          14898         0            0         0      3065     11833
+===============================================================================
+    Grand Total      Good    Bad: Time     Phase     Grade       Cut
+          14898         0            0         0      3065     11833
+   in  73817.     seconds
+ Spectrum         has        0 counts for   0.000     counts/sec
+Keyword DATE-OBS has two values: '2024-02-29T10:01:04' and '2024-02-29T11:52:02
+'
+Keyword DATE-END has two values: '2024-03-02T08:51:04' and '2024-03-02T08:00:01
+'
+ ... wrote the PHA data Extension
+Wrote spectrum to TEST_calpix_Hp_src.pi
+xsel:XRISM-RESOLVE-PX_NORMAL >
+xsel:XRISM-RESOLVE-PX_NORMAL > ! End of xselect
+xsel:XRISM-RESOLVE-PX_NORMAL > exit
+> Save this session? >[yes] yes
+Session saved, goodbye

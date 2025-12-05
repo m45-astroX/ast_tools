@@ -1,0 +1,88 @@
+STARTLOG: 2025/10/06 19:40:56
+EXECNAME: coordpnt
+RUNPATH:  /Users/aoki/.GIT/ast_tools/rmfArf-basic_rsl_rmfsiz_X/rmfArf-basic_rsl_rmfsiz_X_v1.0
+
+coordpnt: INFO: startsysname=DET; stopsysname=SKY
+coordpnt: INFO: startsys_is_radec=0; stopsys_is_radec=1
+coordpnt: INFO: startsys_is_telpol=0; stopsys_is_telpol=0
+coordpnt: INFO: startsys_is_telxy=0; stopsys_is_telxy=0
+coordpnt: INFO: Querying CALDB for TelDef file with these parameters:
+coordpnt: INFO:    TELESCOPE:  XRISM
+coordpnt: INFO:    INSTRUMENT: RESOLVE
+coordpnt: INFO:    DETNAM:     -
+coordpnt: INFO:    FILTER:     -
+coordpnt: INFO:    CODENAME:   TELDEF
+coordpnt: INFO:    START DATE: -
+coordpnt: INFO:    START TIME: -
+coordpnt: INFO:    STOP DATE:  -
+coordpnt: INFO:    STOP TIME:  -
+coordpnt: INFO:    EXPRESSION: -
+coordpnt: INFO: TelDef file = /Users/aoki/XRISM/software/CALDB/data/xrism/resolve/bcf/teldef/xa_rsl_teldef_20190101v004.fits
+coordpnt: INFO: optcoord_sysnum: 2
+coordpnt: INFO: lowest_sys, highest_sys: 0, 4
+coordpnt: INFO: startsysname: DET
+coordpnt: INFO: startsysnum: 2
+coordpnt: INFO: stopsysname: SKY
+coordpnt: INFO: stopsysnum: 4
+coordpnt: INFO: Values of actual pointing parameters:
+coordpnt: INFO: ra: 266.42226
+coordpnt: INFO: dec: -28.99697
+coordpnt: INFO: roll: 89.586885
+coordpnt: INFO: Actual pointing quaternion (attitude):  0.63009897 0.58767081 -0.36867339 0.34885275
+coordpnt: INFO: Effective values of nominal pointing parameters:
+coordpnt: INFO: ra: 266.42226
+coordpnt: INFO: dec: -28.99697
+coordpnt: INFO: roll: 0
+coordpnt: INFO: WCSdata structure:
+coordpnt: INFO: exists:  1
+coordpnt: INFO: xrefval: 266.42226
+coordpnt: INFO: yrefval: -28.99697
+coordpnt: INFO: xrefpix: 1215.5
+coordpnt: INFO: yrefpix: 1215.5
+coordpnt: INFO: xinc:    -0.00049110668
+coordpnt: INFO: yinc:    0.00049110668
+coordpnt: INFO: rot:     0
+coordpnt: INFO: type:    -TAN
+coordpnt: INFO: Nominal quaternion (attitude):  0.86119583 -0.026896712 -0.015844332 0.50731378
+coordpnt: INFO: Looking for MULTISEG transformation:
+coordpnt: INFO: lowsysnum, highsysnum: 2, 4
+coordpnt: INFO: startsysnum, stopsysnum: 2, 4
+coordpnt: INFO: START PARAMETER LIST:
+coordpnt: INFO: coordpnt 'input=3.5,3.5' 'outfile=NONE' 'telescop=XRISM' 'instrume=RESOLVE' 'ra=266.422260205822' 'dec=-28.9969703804649' 'roll=89.5868845095546' 'ranom=-999.0' 'decnom=-999.0' 'rollnom=0.0' 'teldeffile=/Users/aoki/XRISM/software/CALDB/data/xrism/resolve/bcf/teldef/xa_rsl_teldef_20190101v004.fits' 'startsys=DET' 'stopsys=RADEC' 'multisegpar=NULL' 'rawtodetseg=-1' 'pixeltest=CENTER' 'winoffsetx=0' 'winoffsety=0' 'outx=1180.84995598676' 'outy=1182.02968753788' 'buffer=-1' 'clobber=no' 'chatter=1' 'logfile=!DEFAULT' 'debug=NO' 'history=YES' 'mode=ql'
+coordpnt: INFO: END PARAMETER LIST
+coordpnt: INFO: POINT:  Starting X,Y: 3.5, 3.5
+coordpnt: INFO: startsysnum, stopsysnum: 2, 4
+coordpnt: INFO: conv_to_higher=1, isys=0
+coordpnt: INFO: sys: 2  seg: 0
+coordpnt: INFO: convert to higher (BASIC):
+coordpnt: INFO: prev_x=3.5, prev_y=3.5, x=1215.5, y=1215.5, sys=2
+coordpnt: INFO: Finished with current conversion: x=1215.5, y=1215.5
+coordpnt: INFO: conv_to_higher=1, isys=1
+coordpnt: INFO: sys: 3  seg: 0
+coordpnt: INFO: convert to higher (SKYATT):
+coordpnt: INFO: q1->p[0]=0.63009897
+coordpnt: INFO: q1->p[1]=0.58767081
+coordpnt: INFO: q1->p[2]=-0.36867339
+coordpnt: INFO: q1->p[3]=0.34885275
+coordpnt: INFO: prev_x=1215.5, prev_y=1215.5, x=1215.5, y=1215.5, sys=3
+coordpnt: INFO: xpix = 1215.5
+coordpnt: INFO: ypix = 1215.5
+coordpnt: INFO: wcs->xrefval = 266.42226
+coordpnt: INFO: wcs->yrefval = -28.99697
+coordpnt: INFO: wcs->xrefpix = 1215.5
+coordpnt: INFO: wcs->yrefpix = 1215.5
+coordpnt: INFO: wcs->xinc = -0.00049110668
+coordpnt: INFO: wcs->yinc = 0.00049110668
+coordpnt: INFO: wcs->rot = 0
+coordpnt: INFO: xpos = 266.42226
+coordpnt: INFO: ypos = -28.99697
+coordpnt: INFO: status = 0
+coordpnt: INFO: convert to higher (RADEC):
+coordpnt: INFO: prev_x=1215.5, prev_y=1215.5, x=266.42226, y=-28.99697
+coordpnt: INFO: Finished with current conversion: x=266.42226, y=-28.99697
+coordpnt: INFO: stopsys_is_telpol=0
+coordpnt: INFO: stopsys_is_telxy =0
+coordpnt: INFO: conv_to_higher_tel=0
+coordpnt: OUTX OUTY=  266.42226021   -28.99697038
+
+ENDLOG:   2.4212 s

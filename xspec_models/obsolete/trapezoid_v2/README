@@ -1,0 +1,24 @@
+### 1回きり
+sudo mkdir -p /Library/Perl/5.34/darwin-thread-multi-2level
+sudo chown -R $(whoami) /Library/Perl/5.34/darwin-thread-multi-2level
+
+### インストール
+initpackage trapezoid_mod model.dat .
+g++ -c trapezoid_mod.cxx -o trapezoid_mod.o -std=c++11 -I $HEADAS/include -fPIC
+g++ -shared -o trapezoid_mod.so trapezoid_mod.o -L $HEADAS/lib -lXSFunctions -lXSUtil -lXSModel -fPIC
+
+
+
+xspec
+lmod trapezoid_model xspec_models/trapezoid
+
+rm -f /Users/aoki/git/ast_tools/xspec_models/trapezoid/trapezoidmodel.o
+rm -f /Users/aoki/git/ast_tools/xspec_models/trapezoid/trapezoid.so
+
+
+### Memo
+! XSPEC の初期化関数を追加
+SUBROUTINE TRAPEZOID_INIT() BIND(C, NAME="Trapezoid_Init")
+  PRINT *, 'Trapezoid model initialized'
+  RETURN
+END SUBROUTINE TRAPEZOID_INIT

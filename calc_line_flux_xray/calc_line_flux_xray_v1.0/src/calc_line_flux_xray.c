@@ -11,7 +11,7 @@
 #include <stdlib.h>
 
 #define N_DIV 100000        // 分割数
-#define NH 21               // 水素柱密度 (×10**22 cm**(-2))
+#define NH 12               // 水素柱密度 (×10**22 cm**(-2))
 #define PHOTON_INDEX 2.0    // Sgr A* のスペクトルの光子指数
 #define L_SGRA 8.0          // 4–8 keV におけるSgr A* の光度 (×10**37 erg s**(-1))
 #define D_OBS_SGRA 8.5      // 観測者とSgr A*の距離 (kpc)
@@ -30,7 +30,7 @@ const char *sub_num[] = {
 int main ( int argc, char *argv[] ) {
     
     if ( argc != 6 ) {
-        fprintf(stderr, "Usage : ./CALC_CROSS_SECTION database_cross-section omega relative_abundance integ_min(keV) integ_max(keV)\n");
+        fprintf(stderr, "Usage : ./calc_line_flux_xray database_cross-section omega relative_abundance integ_min(keV) integ_max(keV)\n");
         fprintf(stderr, "    database_cross-section : The file path of cross-section database.\n");
         fprintf(stderr, "    omega : Fluorescence yield.\n");
         fprintf(stderr, "    relative_abundance : Relative abundance to Hydrogen.\n");
@@ -122,7 +122,7 @@ double integral_function ( char filename_database_sigma[], double integ_min, dou
         // 加算
         sum += sigma * pow(E, -1.0 * PHOTON_INDEX) * dE;
         E += dE;
-
+        
         // ファイルポインタのリセット
         rewind(fp_database_sigma);
 

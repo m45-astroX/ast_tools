@@ -1,0 +1,91 @@
+BEGIN INFO
+date : 2024年 6月12日 水曜日 02時33分26秒 JST
+whoami : aoki
+pwd : /Users/aoki/git/ast_tools/extractCalpixSpec/extractCalpixSpec_v1.0
+HEADAS : /Users/aoki/XRISM/software/HEADAS/XRISM_15Oct2023_Build7/x86_64-apple-darwin23.1.0
+CALDB : /Users/aoki/XRISM/software/CALDB
+SCRIPT VERSION : 
+
+$0 : extractCalpixSpec_onsrc_v1.0.bash
+$1 : TEST
+$f_evt_dir : .
+$f_evt : xa300045010rsl_p0px1000_cl.evt.gz
+$d_log : ./logfiles_extractCalpixSpec_onsrc
+$f_log : ./logfiles_extractCalpixSpec_onsrc/extractCalpixSpec_onsrc.log
+$f_evt_clean2_dir : .
+$f_evt_clean2 : TEST_calpix_cl2.evt
+$f_pi : TEST_calpix_Hp_src.pi
+END INFO
+
+
+CMD : ftcopy infile=xa300045010rsl_p0px1000_cl.evt.gz[EVENTS][(PI>=600)&&((RISE_TIME>=40&&RISE_TIME<=60&&ITYPE<4)||(ITYPE==4))&&STATUS[4]==b0] outfile=TEST_calpix_cl2.evt copyall=yes clobber=yes history=yes
+
+BEGIN XSELECT
+CMD : xselect
+
+ 
+                         **  XSELECT V2.5b  **
+ 
+> Enter session name >[xsel] xsel
+xsel:SUZAKU > 
+xsel:SUZAKU > ! Setup
+xsel:SUZAKU > set mission XRISM
+xsel:XRISM > 
+xsel:XRISM > ! Read events
+xsel:XRISM > read events
+> Enter the Event file dir >[.] .
+> Enter Event file list >[TEST_calpix_cl2.evt] TEST_calpix_cl2.evt
+ 
+ 
+        OBJECT            TELESCOP    INSTRUME    DETNAM      DATAMODE    DATE-OBS            DATE-END
+      1 Galactic_Center_2 XRISM       RESOLVE     PIXEL       PX_NORMAL   2024-02-29T11:52:02 2024-03-02T08:00:01
+ 
+ Notes: XSELECT set up for      XRISM
+ Time keyword is TIME       in units of s
+ Default timing binsize =   16.000
+ 
+Setting...
+ Image  keywords   = X          Y           with binning =    1
+ Energy keyword   = PI                     with binning =    1
+ 
+Getting Min and Max for Energy Column...
+Got min and max for PI:     0  59999
+ 
+Got the minimum time resolution of the read data:  0.50000E-05
+MJDREF =  5.8484000800741E+04 with TIMESYS = TT
+ Number of files read in:            1
+ 
+******************** Observation Catalogue ********************
+ 
+Data Directory is: /Users/aoki/.GIT/ast_tools/extractCalpixSpec/extractCalpixSpec_v1.0/
+HK Directory is: /Users/aoki/.GIT/ast_tools/extractCalpixSpec/extractCalpixSpec_v1.0/
+ 
+xsel:XRISM-RESOLVE-PX_NORMAL > 
+xsel:XRISM-RESOLVE-PX_NORMAL > ! Make PI files
+xsel:XRISM-RESOLVE-PX_NORMAL > filter column "PIXEL=12:12"
+xsel:XRISM-RESOLVE-PX_NORMAL > filter GRADE "0:0"
+xsel:XRISM-RESOLVE-PX_NORMAL > extract spectrum
+extractor v6.10    20 Jan 2023
+ Getting FITS WCS Keywords
+ Doing file: /Users/aoki/.GIT/ast_tools/extractCalpixSpec/extractCalpixSpec_v1.0/TEST_calpix_cl2.evt
+ 10% completed 20% completed 30% completed 40% completed 50% completed 60% completed 70% completed 80% completed 90% completed100% completed
+          Total      Good    Bad: Time     Phase     Grade       Cut
+          14898         0            0         0      3065     11833
+===============================================================================
+    Grand Total      Good    Bad: Time     Phase     Grade       Cut
+          14898         0            0         0      3065     11833
+   in  73817.     seconds
+ Spectrum         has        0 counts for   0.000     counts/sec
+Keyword DATE-OBS has two values: '2024-02-29T10:01:04' and '2024-02-29T11:52:02'
+Keyword DATE-END has two values: '2024-03-02T08:51:04' and '2024-03-02T08:00:01'
+ ... wrote the PHA data Extension
+xsel:XRISM-RESOLVE-PX_NORMAL > save spectrum TEST_calpix_Hp_src.pi
+Wrote spectrum to TEST_calpix_Hp_src.pi
+xsel:XRISM-RESOLVE-PX_NORMAL > 
+xsel:XRISM-RESOLVE-PX_NORMAL > ! End of xselect
+xsel:XRISM-RESOLVE-PX_NORMAL > exit
+> Save this session? >[yes] yes
+Session saved, goodbye
+
+END XSELECT
+

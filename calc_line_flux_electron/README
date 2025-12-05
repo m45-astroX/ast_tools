@@ -1,0 +1,4 @@
+・calc_line_flux_electron_v1.0
+	・nを積分から導出
+・calc_line_flux_electron_v1.0.2
+	・nを積分ではない方法（単純に10keVで割る）で算出

@@ -1,0 +1,12 @@
+### 1回きり
+sudo mkdir -p /Library/Perl/5.34/darwin-thread-multi-2level
+sudo chown -R $(whoami) /Library/Perl/5.34/darwin-thread-multi-2level
+
+### インストール
+initpackage trapezoid model.dat .
+hmake
+xspec
+lmod trapezoid .
+
+### Cleanup
+rm -f *.dylib lpack_* *FunctionMap* pkgIndex.tcl *.o Makefile 

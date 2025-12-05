@@ -59,4 +59,4 @@
 
     $ cd /path/to/calc_line_flux_xray_v1.0
     $ make
-    $ ./CALC_CROSS_SECTION database_cross-section omega relative_abundance integ_min(keV) integ_max(keV)
+    $ ./calc_line_flux_xray database_cross-section omega relative_abundance integ_min(keV) integ_max(keV)

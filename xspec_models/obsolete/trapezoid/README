@@ -1,0 +1,27 @@
+### 1回きり
+sudo mkdir -p /Library/Perl/5.34/darwin-thread-multi-2level
+sudo chown -R $(whoami) /Library/Perl/5.34/darwin-thread-multi-2level
+
+### インストール
+rm -f /Users/aoki/git/ast_tools/xspec_models/trapezoid/trapezoidmodel.o
+rm -f /Users/aoki/git/ast_tools/xspec_models/trapezoid/trapezoid.so
+#gfortran -c /Users/aoki/git/ast_tools/xspec_models/trapezoid/trapezoidmodel.f90 -o /Users/aoki/git/ast_tools/xspec_models/trapezoid/trapezoidmodel.o
+#gfortran -shared -o /Users/aoki/git/ast_tools/xspec_models/trapezoid/trapezoid.so /Users/aoki/git/ast_tools/xspec_models/trapezoid/trapezoidmodel.o -fPIC
+gfortran -c -fno-underscoring trapezoidmodel.f90 -o trapezoidmodel.o
+gfortran -shared -o trapezoid.so trapezoidmodel.o -fPIC -fno-underscoring
+nm -g trapezoid.so | grep -i init
+
+
+xspec
+lmod trapezoid /Users/aoki/git/ast_tools/xspec_models/trapezoid
+
+rm -f /Users/aoki/git/ast_tools/xspec_models/trapezoid/trapezoidmodel.o
+rm -f /Users/aoki/git/ast_tools/xspec_models/trapezoid/trapezoid.so
+
+
+### Memo
+! XSPEC の初期化関数を追加
+SUBROUTINE TRAPEZOID_INIT() BIND(C, NAME="Trapezoid_Init")
+  PRINT *, 'Trapezoid model initialized'
+  RETURN
+END SUBROUTINE TRAPEZOID_INIT
